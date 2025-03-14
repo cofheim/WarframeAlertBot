@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "6YjIlW6A/9UY+pR+4qJM+SQfd3DEU9wvOkoymorjdnw=",
+  "Source": "WarframeAlertBot",
+  "BasePath": "_content/WarframeAlertBot",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
