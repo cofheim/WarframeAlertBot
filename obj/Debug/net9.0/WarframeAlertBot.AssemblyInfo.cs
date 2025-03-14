@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WarframeAlertBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9eac46c00fd319ce3aef73b317a2f3c943315d4e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb6a67d49e65ba4c194cd7556c8511bf84d59d99")]
 [assembly: System.Reflection.AssemblyProductAttribute("WarframeAlertBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WarframeAlertBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

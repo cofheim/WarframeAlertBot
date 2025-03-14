@@ -327,17 +327,26 @@ namespace WarframeAlertBot.Services
             var weekly = state.NightwaveChallenges.Where(c => !c.IsDaily && !c.IsElite);
             var elite = state.NightwaveChallenges.Where(c => c.IsElite);
 
-            return "🌟 Задания Найтвейв:\n\n" +
-                   FormatChallenges("Ежедневные", daily) +
-                   FormatChallenges("Еженедельные", weekly) +
-                   FormatChallenges("Элитные еженедельные", elite);
+            return "🌟 Найтвейв\n\n" +
+                   FormatChallenges(daily, "⭐️", 1000) +
+                   FormatChallenges(weekly, "⭐️⭐️", 4500) +
+                   FormatChallenges(elite, "⭐️⭐️⭐️", 7000);
         }
 
-        private string FormatChallenges(string title, IEnumerable<NightwaveChallenge> challenges)
+        private string FormatChallenges(IEnumerable<NightwaveChallenge> challenges, string stars, int standing)
         {
+            if (!challenges.Any()) return "";
+
             var formatted = challenges.Select(c =>
-                $"• {c.Title} ({c.Standing:N0})\n  {c.Description}\n  ⏰ До: {c.Expiry:g}");
-            return $"== {title} ==\n" + string.Join("\n\n", formatted) + "\n\n";
+            {
+                var timeLeft = c.Expiry.HasValue ? FormatTimeSpan(c.Expiry.Value - DateTime.UtcNow) : "время истекло";
+                return $"{stars} {c.Title}\n" +
+                       $"💬 {c.Description}\n" +
+                       $"🎖 {standing:N0} очков\n" +
+                       $"⏰ {timeLeft}\n";
+            });
+
+            return string.Join("\n", formatted);
         }
 
         private string FormatVoidTrader(GameState state)
@@ -371,10 +380,19 @@ namespace WarframeAlertBot.Services
                 return "Информация об Охоте на Архонта недоступна.";
 
             var hunt = state.ArchonHunt;
-            return $"🎭 Охота на Архонта\n\n" +
-                   $"👑 Босс: {hunt.Boss}\n\n" +
-                   "Миссии:\n" + string.Join("\n", hunt.Missions.Select((m, i) => $"{i + 1}. {m}")) +
-                   $"\n\n⏰ До: {hunt.Expiry:g}";
+            var timeLeft = hunt.Expiry.HasValue ? FormatTimeSpan(hunt.Expiry.Value - DateTime.UtcNow) : "время истекло";
+
+            var missions = hunt.Missions.Select((mission, index) =>
+            {
+                var missionType = mission.Split(" - ").FirstOrDefault() ?? mission;
+                var location = mission.Split(" - ").LastOrDefault() ?? "";
+                return $"{missionType} - {location}";
+            });
+
+            return $"🎭 Архонт Хант\n\n" +
+                   $"👤 Архонт {hunt.Boss}\n" +
+                   $"⏰ {timeLeft}\n\n" +
+                   string.Join("\n", missions);
         }
 
         private string FormatWorldCycles(GameState state)
