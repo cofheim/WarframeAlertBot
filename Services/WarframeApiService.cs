@@ -21,6 +21,7 @@ namespace WarframeAlertBot.Services
             _logger = logger;
             _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "WarframeAlertBot/1.0");
+            _httpClient.DefaultRequestHeaders.Add("Language", "en");
             _httpClient.BaseAddress = new Uri(BaseUrl);
             _jsonOptions = new JsonSerializerOptions
             {

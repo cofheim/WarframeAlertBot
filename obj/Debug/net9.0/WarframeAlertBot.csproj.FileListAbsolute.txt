@@ -134,3 +134,4 @@ C:\Users\plast\.cursor-tutor\WarframeAlertBot\obj\Debug\net9.0\WarframeAlertBot.
 C:\Users\plast\.cursor-tutor\WarframeAlertBot\obj\Debug\net9.0\WarframeAlertBot.genruntimeconfig.cache
 C:\Users\plast\.cursor-tutor\WarframeAlertBot\obj\Debug\net9.0\ref\WarframeAlertBot.dll
 C:\Users\plast\.cursor-tutor\WarframeAlertBot\bin\Debug\net9.0\Data\users.json
+C:\Users\plast\.cursor-tutor\WarframeAlertBot\obj\Debug\net9.0\WarframeAlertBot.sourcelink.json
